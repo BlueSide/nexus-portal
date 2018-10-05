@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+@import "uikit/src/scss/uikit-theme.scss";
+
+// NOTE: This fixes some weird text rendering issue in Chrome
+.uk-inline {
+    -webkit-backface-visibility: inherit;
+}

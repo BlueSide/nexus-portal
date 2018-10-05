@@ -1,0 +1,62 @@
+<div class="uk-container uk-container-expand">
+    <div class="uk-position-center">
+        
+        <div class="uk-card uk-card-default uk-card-body">
+            
+            <h3 class="uk-card-title">Login</h3>
+
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
+                        <input class="uk-input" type="text" placeholder="Username or e-mail" id="usernameOrEmail" name="usernameOrEmail"
+                               required
+                               [(ngModel)]="loginRequest.usernameOrEmail"
+                               #usernameOrEmail="ngModel" />
+                    </div>
+                    <div *ngIf="usernameOrEmail.invalid && (usernameOrEmail.dirty || usernameOrEmail.touched)"
+                         class="uk-text-danger">
+
+                        <div *ngIf="usernameOrEmail.errors.required">
+                            Username or email is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                        <input class="uk-input" type="password" placeholder="Password" id="password" name="password"
+                               required
+                               [(ngModel)]="loginRequest.password"
+                               #password="ngModel" />
+                    </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                         class="uk-text-danger">
+
+                        <div *ngIf="password.errors.required">
+                            Password is required.
+                        </div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="loginFailed" class="uk-text-danger uk-animation-shake">
+                    Wrong username or password.
+                </div>
+                
+                <div class="uk-margin uk-grid-small" uk-grid>
+                    <div>
+                        <button type="submit" class="uk-button uk-button-primary">Login</button>
+                    </div>
+                    <div>
+                        <button type="button" class="uk-button uk-button-default" routerLink="/register">Register</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>
+</div>

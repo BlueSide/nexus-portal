@@ -1,0 +1,30 @@
+<div *ngFor="let project of projects" class="uk-margin uk-grid-small" uk-grid>
+    <div class="uk-card uk-card-body uk-card-default">
+        <h3 class="uk-card-title">{{project.name}}</h3>
+        <table class="uk-table uk-table-small">
+            <thead>
+                <tr>
+                    <th class="uk-width-small"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td>{{project.id}}</td>
+                </tr>
+                <tr>
+                    <td>URL:</td>
+                    <td><a href="{{project.uri}}">{{project.uri}}</a></td>
+                </tr>
+                <tr>
+                    <td>Created:</td>
+                    <td>{{project.createdAt | date: "medium"}}</td>
+                </tr>
+                <tr>
+                    <td>Last updated:</td>
+                    <td>{{project.updatedAt | date: "medium"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
