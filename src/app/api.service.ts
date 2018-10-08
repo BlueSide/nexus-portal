@@ -11,11 +11,6 @@ export class ApiService
     constructor(private http: HttpClient)
     {
     }
-
-    public login(credentials: LoginRequest): any
-    {
-        return this.http.post<any>(`${environment.apiUrl}/api/auth/signin`, credentials, this.makeOptions());
-    }
     
     public register(registration: any): any
     {
@@ -51,19 +46,12 @@ export class ApiService
     {
         let headersObj: any = {
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem("jwt")
+            'Content-Type': 'application/json'
+//            'Authorization': 'Bearer ' + localStorage.getItem("jwt")
         };
 
         let headers = new HttpHeaders(headersObj);
         return {headers: headers};
     }
 
-}
-
-export interface LoginRequest
-{
-    usernameOrEmail: string;
-    password: string;
-    redirectUrl: string;
 }

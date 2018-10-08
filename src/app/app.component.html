@@ -3,22 +3,23 @@
     <div class="uk-navbar-left">
         <a routerLink="/" class="uk-navbar-item uk-logo">Nexus Portal</a>
         <ul class="uk-navbar-nav">
+            <li *ngIf="authService.isAdmin()">
+                <a routerLink="admin">Admin</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a routerLink="admin/users">Users</a></li>
+                        <li><a routerLink="admin/projects">Projects</a></li>
+                    </ul>
+                </div>
+            </li>
         </ul>
 
     </div>
 
     <div class="uk-navbar-right">
 
-        <ul  *ngIf="loggedIn" class="uk-navbar-nav">
-            <li>
-                <a href="#">{{user.name}}</a>
-                <div class="uk-navbar-dropdown">
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a routerLink="/profile">Account settings</a></li>
-                        <li><a (click)="logout()">Log out</a></li>
-                    </ul>
-                </div>
-            </li>
+        <ul class="uk-navbar-nav">
+            <li *ngIf="authService.isAuthenticated()"><a (click)="authService.logout()">Log out</a></li>
         </ul>
 
     </div>
