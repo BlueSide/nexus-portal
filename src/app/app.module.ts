@@ -16,6 +16,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { PortalComponent } from './portal/portal.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProjectComponent } from './admin/projects/project/project.component';
 
 //TODO: Lazy loading
 //TODO: Move to routing module
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
         LoginComponent,
         PortalComponent,
         UserProfileComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ProjectComponent
     ],
     imports: [
         BrowserModule,

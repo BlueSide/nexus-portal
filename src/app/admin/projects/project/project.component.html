@@ -1,0 +1,67 @@
+<div>
+    <h1>{{projectForm.value.name}}</h1>
+    <form [formGroup]="projectForm" class="uk-form-horizontal uk-margin-large" (ngSubmit)="save()">
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Authority Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" formControlName="authorityName">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">URL</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" formControlName="uri">
+            </div>
+        </div>
+
+        
+        <button type="submit" class="uk-button uk-button-default">Cancel</button>
+        <button type="submit" class="uk-button uk-button-primary">Save</button>
+    </form>
+
+</div>
+
+<div class="uk-margin">
+    <button class="uk-button uk-button-primary" type="button" (click)="addUser()">Add</button>
+    <div uk-form-custom="target: > * > span:first-child">
+        <select [(ngModel)]="selectedUser">w
+            <option *ngFor="let user of users" value="{{user.username}}">{{user.name}}</option>
+        </select>
+        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+            <span></span>
+            <span uk-icon="icon: chevron-down"></span>
+        </button>
+    </div>
+</div>
+
+<div class="uk-margin">
+    <table class="uk-table uk-table-divider">
+        <thead>
+            <tr>
+                <th>Delete</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of project.users" (click)="router.navigate(['admin/projects', project.id])">
+                <td><a (click)="removeUser(user.username)" uk-icon="icon: close"></a></td>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

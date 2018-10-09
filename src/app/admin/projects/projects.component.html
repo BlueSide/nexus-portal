@@ -1,1 +1,28 @@
-<p>projects works!</p>
+<div>
+    <table class="uk-table uk-table-divider">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Created at</th>
+                <th>Created by</th>
+                <th>Modified at</th>
+                <th>Modified by</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of projects" (click)="router.navigate(['admin/projects', project.id])">
+                <td>{{project.id}}</td>
+                <td>{{project.name}}</td>
+                <td>{{project.uri}}</td>
+                <td>{{project.createdAt | date: "medium"}}</td>
+                <td>{{project.createdBy}}</td>
+                <td>{{project.updatedAt | date: "medium"}}</td>
+                <td>{{project.updatedBy}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<button (click)="test()">Create Test Project</button>

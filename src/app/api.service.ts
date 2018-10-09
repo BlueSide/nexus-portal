@@ -8,6 +8,8 @@ import { environment } from '../environments/environment';
 export class ApiService
 {
 
+    // TODO: This service is kind of obsolete, remove it!
+    
     constructor(private http: HttpClient)
     {
     }
@@ -20,11 +22,6 @@ export class ApiService
     public getUserInfo(): any
     {
         return this.http.get<any>(`${environment.apiUrl}/api/user/me`, this.makeOptions());
-    }
-
-    public getProjects(): any
-    {
-        return this.http.get<any>(`${environment.apiUrl}/api/projects`, this.makeOptions());
     }
 
     public get(endpoint: string): any
@@ -47,7 +44,6 @@ export class ApiService
         let headersObj: any = {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-//            'Authorization': 'Bearer ' + localStorage.getItem("jwt")
         };
 
         let headers = new HttpHeaders(headersObj);

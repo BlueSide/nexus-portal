@@ -12,6 +12,7 @@ export class PortalComponent implements OnInit
     
     constructor(private api: ApiService)
     {
+        this.getUserInfo();
     }
 
     ngOnInit() {
@@ -19,13 +20,10 @@ export class PortalComponent implements OnInit
 
     public getUserInfo(): void
     {
-        /*
-        this.api.getProjects().subscribe(
-            (projects) => {
-                console.log(projects);
-                this.projects = projects;
+        this.api.getUserInfo().subscribe(
+            (result) => {
+                this.projects = result.projects;
             }
         );
-*/
     }
 }

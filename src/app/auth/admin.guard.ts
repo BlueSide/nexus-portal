@@ -17,7 +17,6 @@ export class AdminGuard implements CanActivate
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean
     {
-        console.log(this.authService.isAdmin());
         if (this.authService.isAdmin()) return true;
 
         // Not logged in so redirect to login page with the return url
