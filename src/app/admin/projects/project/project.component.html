@@ -33,7 +33,7 @@
 <div class="uk-margin">
     <button class="uk-button uk-button-primary" type="button" (click)="addUser()">Add</button>
     <div uk-form-custom="target: > * > span:first-child">
-        <select [(ngModel)]="selectedUser">w
+        <select [(ngModel)]="selectedUser">
             <option *ngFor="let user of users" value="{{user.username}}">{{user.name}}</option>
         </select>
         <button class="uk-button uk-button-default" type="button" tabindex="-1">

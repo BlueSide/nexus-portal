@@ -14,15 +14,14 @@ import { AdminGuard } from './auth/admin.guard';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PortalComponent } from './portal/portal.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectComponent } from './admin/projects/project/project.component';
+import { UserComponent } from './admin/users/user/user.component';
 
 //TODO: Lazy loading
 //TODO: Move to routing module
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: '', component: PortalComponent, canActivate: [AuthGuard] },
     { path: '**', component: PageNotFoundComponent }
 ];
@@ -32,9 +31,9 @@ const appRoutes: Routes = [
         AppComponent,
         LoginComponent,
         PortalComponent,
-        UserProfileComponent,
         PageNotFoundComponent,
-        ProjectComponent
+        ProjectComponent,
+        UserComponent
     ],
     imports: [
         BrowserModule,

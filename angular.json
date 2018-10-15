@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/nexus-portal",
+                        "outputPath": "dist",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -71,6 +71,16 @@
                             "extractLicenses": false,
                             "vendorChunk": false,
                             "buildOptimizer": true
+                        },
+                        "local": {
+                            
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.local.ts"
+                                }
+                            ]
+                            
                         }
                     }
                     
@@ -83,6 +93,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "nexus-portal:build:production"
+                        },
+                        "local": {
+                            "browserTarget": "nexus-portal:build:local"
                         }
                     }
                 },

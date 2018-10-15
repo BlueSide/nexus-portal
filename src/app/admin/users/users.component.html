@@ -1,3 +1,77 @@
-<p>
-  users works!
-</p>
+<a class="uk-button uk-button-primary" href="#modal-new-project" uk-toggle>New user</a>
+
+<div #modalElement id="modal-new-project" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog">
+        <form [formGroup]="userForm" class="uk-form-horizontal uk-margin-large" (ngSubmit)="createUser()">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">New project</h2>
+            </div>
+            <div class="uk-modal-body">
+
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-horizontal-text">Name</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" type="text" formControlName="name">
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-horizontal-text">Username</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" type="text" formControlName="username">
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-horizontal-text">E-mail</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" type="text" formControlName="email">
+                    </div>
+                </div>
+                
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="form-horizontal-text">Password</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" type="password" formControlName="password">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <table class="uk-table uk-table-divider uk-table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>E-mail</th>
+                <th>Created at</th>
+                <th>Created by</th>
+                <th>Modified at</th>
+                <th>Modified by</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users" (click)="router.navigate(['admin/users', user.username])">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.createdAt | date: "medium"}}</td>
+                <td>{{user.createdBy}}</td>
+                <td>{{user.updatedAt | date: "medium"}}</td>
+                <td>{{user.updatedBy}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

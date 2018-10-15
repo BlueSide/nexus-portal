@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ProjectService } from '../project.service';
-import { UserService } from '../../../user.service';
+import { UserService } from '../../users/user.service';
 
 @Component({
   selector: 'app-project',
@@ -12,14 +12,11 @@ import { UserService } from '../../../user.service';
 })
 export class ProjectComponent
 {
-
     // TODO: Loaders
-
-    
     private id: number;
-    private users: any[];
-    public selectedUser: any;
 
+    public users: any[];
+    public selectedUser: any;
     public project: any = {};
     public projectForm = this.formBuilder.group({
         name: [''],
@@ -32,7 +29,7 @@ export class ProjectComponent
                 private route: ActivatedRoute,
                 private formBuilder: FormBuilder,
                 private projectService: ProjectService,
-                private userService:UserService)
+                private userService: UserService)
     {
         this.id = +this.route.snapshot.paramMap.get('id');
         this.refresh();

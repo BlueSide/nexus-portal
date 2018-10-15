@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://nexus.blueside.nl'
+    apiUrl: 'http://localhost:8080'
 };
 
 /*
@@ -9,4 +9,4 @@ export const environment = {
  * import the following file, but please comment it out in production mode
  * because it will have performance impact when throw error
  */
-//import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import 'zone.js/dist/zone-error';  // Included with Angular CLI.

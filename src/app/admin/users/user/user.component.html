@@ -1,0 +1,31 @@
+<div>
+    <h1>{{userForm.value.name}}</h1>
+    <form [formGroup]="userForm" class="uk-form-horizontal uk-margin-large" (ngSubmit)="save()">
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Username</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" formControlName="username">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">E-mail</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" formControlName="email">
+            </div>
+        </div>
+
+        
+        <button type="submit" class="uk-button uk-button-default">Cancel</button>
+        <button type="submit" class="uk-button uk-button-primary">Save</button>
+    </form>
+
+</div>
