@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 
-const LOGIN_ENDPOINT: string = '/api/auth/signin';
+const LOGIN_ENDPOINT: string = '/auth/signin';
 const jwtHelper = new JwtHelperService();
 
 @Injectable({
@@ -42,7 +42,7 @@ export class AuthService
     public logout(): void
     {
         localStorage.removeItem("currentUser");
-        window.location.reload(true);
+        window.location.replace('/');
     }
     
     public isAuthenticated(): boolean
@@ -59,7 +59,6 @@ export class AuthService
     {
         if(!this.isAuthenticated()) return false;
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        //console.log(currentUser.roles);
         for(let role of currentUser.roles)
         {
             if(role.name === "ROLE_ADMIN") return true;

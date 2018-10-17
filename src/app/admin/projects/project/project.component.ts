@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ProjectService } from '../project.service';
 import { UserService } from '../../users/user.service';
+import * as UIkit from 'uikit';
 
 @Component({
   selector: 'app-project',
@@ -15,6 +16,9 @@ export class ProjectComponent
     // TODO: Loaders
     private id: number;
 
+    public loading: boolean;
+    public loadingUsers: boolean;
+    
     public users: any[];
     public selectedUser: any;
     public project: any = {};
@@ -37,14 +41,18 @@ export class ProjectComponent
 
     public refresh(): void
     {
+        this.loading = true;
         this.projectService.getProject(this.id).subscribe((result) => {
             this.projectForm.patchValue(result);
             this.project = result;
+            this.loading = false;
         });
 
+        this.loadingUsers = true;
         this.userService.getUsers().subscribe((result) => {
             this.users = result;
             this.selectedUser = this.users[0].username;
+            this.loadingUsers = false;
         });
     }
 
@@ -67,6 +75,19 @@ export class ProjectComponent
     {
         this.projectService.removeUser(this.id, username).subscribe((result) => {
             this.refresh();
+        });
+    }
+
+    public deleteProject(): void
+    {
+        UIkit.modal.confirm('UIkit confirm!').then( () => {
+            
+            this.projectService.deleteProject(this.id).subscribe(() => {
+                this.router.navigate(['admin/projects']);
+            });
+            
+        }, () => {
+            // Do nothing on cancel
         });
     }
 

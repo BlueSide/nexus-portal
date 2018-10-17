@@ -11,8 +11,8 @@ import * as UIkit from 'uikit';
 })
 export class UsersComponent
 {
-
     public users: any[] = [];
+    public loading: boolean = true;
 
     @ViewChild('modalElement') modalElement: ElementRef;
 
@@ -35,8 +35,10 @@ export class UsersComponent
 
     public getUsers()
     {
+        this.loading = true;
         this.userService.getUsers().subscribe((result: any[]) => {
             this.users = result;
+            this.loading = false;
         });
     }
 

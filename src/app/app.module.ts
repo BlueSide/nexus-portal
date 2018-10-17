@@ -17,14 +17,7 @@ import { PortalComponent } from './portal/portal.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectComponent } from './admin/projects/project/project.component';
 import { UserComponent } from './admin/users/user/user.component';
-
-//TODO: Lazy loading
-//TODO: Move to routing module
-const appRoutes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: '', component: PortalComponent, canActivate: [AuthGuard] },
-    { path: '**', component: PageNotFoundComponent }
-];
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
     declarations: [
@@ -41,10 +34,7 @@ const appRoutes: Routes = [
         ReactiveFormsModule,
         HttpClientModule,
         AdminRoutingModule,
-        RouterModule.forRoot(
-            appRoutes,
-            { enableTracing: false } // <-- debugging purposes only
-        )
+        AppRoutingModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

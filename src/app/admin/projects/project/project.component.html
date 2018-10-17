@@ -1,5 +1,10 @@
-<div>
-    <h1>{{projectForm.value.name}}</h1>
+<div *ngIf="loading" uk-spinner="ratio: 3"></div>
+<div *ngIf="!loading">
+        <h1>{{projectForm.value.name}}</h1>
+    <div class="uk-align-right">
+        <button type="button" class="uk-button uk-button-danger" (click)="deleteProject()">Delete project</button>
+    </div>
+    
     <form [formGroup]="projectForm" class="uk-form-horizontal uk-margin-large" (ngSubmit)="save()">
 
         <div class="uk-margin">
@@ -26,42 +31,44 @@
         
         <button type="submit" class="uk-button uk-button-default">Cancel</button>
         <button type="submit" class="uk-button uk-button-primary">Save</button>
+        
     </form>
 
-</div>
-
-<div class="uk-margin">
-    <button class="uk-button uk-button-primary" type="button" (click)="addUser()">Add</button>
-    <div uk-form-custom="target: > * > span:first-child">
-        <select [(ngModel)]="selectedUser">
-            <option *ngFor="let user of users" value="{{user.username}}">{{user.name}}</option>
-        </select>
-        <button class="uk-button uk-button-default" type="button" tabindex="-1">
-            <span></span>
-            <span uk-icon="icon: chevron-down"></span>
-        </button>
+    <div class="uk-margin">
+        <button class="uk-button uk-button-primary" type="button" (click)="addUser()">Add user</button>
+        <div uk-form-custom="target: > * > span:first-child">
+            <select class="uk-select" [(ngModel)]="selectedUser">
+                <option *ngFor="let user of users" value="{{user.username}}">{{user.name}}</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                <span *ngIf="loadingUsers" uk-spinner="ratio: 0.7"></span>
+                <span></span>
+                <span uk-icon="icon: chevron-down"></span>
+            </button>
+        </div>
     </div>
-</div>
 
-<div class="uk-margin">
-    <table class="uk-table uk-table-divider">
-        <thead>
-            <tr>
-                <th>Delete</th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>E-mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of project.users" (click)="router.navigate(['admin/projects', project.id])">
-                <td><a (click)="removeUser(user.username)" uk-icon="icon: close"></a></td>
-                <td>{{user.id}}</td>
-                <td>{{user.name}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div class="uk-margin">
+        <table class="uk-table uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Delete</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of project.users" (click)="router.navigate(['admin/projects', project.id])">
+                    <td><a (click)="removeUser(user.username)" uk-icon="icon: close"></a></td>
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

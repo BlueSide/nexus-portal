@@ -1,5 +1,8 @@
-<div>
+<div *ngIf="loading" uk-spinner="ratio: 3"></div>
+<div *ngIf="!loading">
+
     <h1>{{userForm.value.name}}</h1>
+
     <form [formGroup]="userForm" class="uk-form-horizontal uk-margin-large" (ngSubmit)="save()">
 
         <div class="uk-margin">
@@ -23,9 +26,17 @@
             </div>
         </div>
 
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">Enabled</label>
+            <div class="uk-form-controls">
+                <input class="uk-checkbox" type="checkbox" formControlName="enabled">
+            </div>
+        </div>
+
         
         <button type="submit" class="uk-button uk-button-default">Cancel</button>
-        <button type="submit" class="uk-button uk-button-primary">Save</button>
+        <button type="submit" class="uk-button uk-button-primary">Save<span *ngIf="saving" class="uk-margin-left" uk-spinner="ratio: 0.7"></span></button>
+        <button type="button" class="uk-button uk-button-danger uk-align-right" (click)="deleteUser()">Delete</button>
     </form>
 
 </div>

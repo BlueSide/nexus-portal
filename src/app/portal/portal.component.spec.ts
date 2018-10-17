@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PortalComponent } from './portal.component';
+import { AuthService } from '../auth/auth.service';
 
 describe('PortalComponent', () => {
   let component: PortalComponent;
@@ -8,7 +9,8 @@ describe('PortalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PortalComponent ]
+        declarations: [ PortalComponent ],
+        providers: [ AuthService ]
     })
     .compileComponents();
   }));

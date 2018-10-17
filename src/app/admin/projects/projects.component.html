@@ -41,7 +41,8 @@
 
 
 <div>
-    <table class="uk-table uk-table-divider uk-table-hover">
+    <div *ngIf="loading" uk-spinner="ratio: 3"></div>
+    <table *ngIf="!loading" class="uk-table uk-table-divider uk-table-hover">
         <thead>
             <tr>
                 <th>Id</th>

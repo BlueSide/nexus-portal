@@ -26,9 +26,14 @@ export class ProjectService
         return this.http.post<Project>(`${environment.apiUrl}/api/projects`, project);
     }
 
-    public saveProject(id: number, project: Project): Observable<any>
+    public saveProject(id: number, project: Project): Observable<Project>
     {
         return this.http.put<Project>(`${environment.apiUrl}/api/projects/${id}`, project);
+    }
+
+    public deleteProject(id: number): Observable<any>
+    {
+        return this.http.delete<any>(`${environment.apiUrl}/api/projects/${id}`);
     }
     
     public addUser(projectId: number, username: string): Observable<any>

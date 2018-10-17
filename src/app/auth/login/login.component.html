@@ -48,7 +48,7 @@
                 
                 <div class="uk-margin uk-grid-small" uk-grid>
                     <div>
-                        <button type="submit" class="uk-button uk-button-primary">Login</button>
+                        <button type="submit" class="uk-button uk-button-primary">Login<span *ngIf="loading" class="uk-margin-left" uk-spinner="ratio: 0.7"></span></button>
                     </div>
                 </div>
             </form>

@@ -12,7 +12,8 @@ import * as UIkit from 'uikit';
 export class ProjectsComponent
 {
     public projects: any[] = [];
-
+    public loading: boolean = true;
+    
     @ViewChild('modalElement') modalElement: ElementRef;
 
     // TODO: Match validators with backend constraints
@@ -34,16 +35,16 @@ export class ProjectsComponent
 
     public getProjects()
     {
+        this.loading = true;
         this.projectService.getProjects().subscribe((result: any[]) => {
             this.projects = result;
+            this.loading = false;
         });
     }
 
     public createProject()
     {
-        console.log(this.projectForm.value);
         this.projectService.createProject(this.projectForm.value).subscribe((result) => {
-            console.log(result);
             UIkit.modal(this.modalElement.nativeElement).hide();
             this.getProjects();
         });

@@ -1,14 +1,19 @@
-<h1>Portal</h1>
+<div *ngIf="loading" uk-spinner="ratio: 3"></div>
 <div class="uk-margin uk-grid-small" uk-grid>
     <div *ngFor="let project of projects">
+
         <div class="uk-card uk-card-body uk-card-default">
+
             <h3 class="uk-card-title">{{project.name}}</h3>
+
             <table class="uk-table uk-table-small">
+
                 <thead>
                     <tr>
                         <th class="uk-width-small"></th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr>
                         <td>ID:</td>
@@ -27,7 +32,10 @@
                         <td>{{project.updatedAt | date: "medium"}}</td>
                     </tr>
                 </tbody>
+                
             </table>
+
         </div>
+        
     </div>
 </div>

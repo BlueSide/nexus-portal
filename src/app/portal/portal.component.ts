@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class PortalComponent implements OnInit
 {
     public projects: any[];
+    public loading: boolean = true;
     
     constructor(private api: ApiService)
     {
@@ -20,9 +21,11 @@ export class PortalComponent implements OnInit
 
     public getUserInfo(): void
     {
+        this.loading = true;
         this.api.getUserInfo().subscribe(
             (result) => {
                 this.projects = result.projects;
+                this.loading = false;
             }
         );
     }
